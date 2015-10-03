@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create an Application<</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+
+
+<div class="container">
+    <h2>XTRAC Developer Signup</h2>
+    <form method="post" role="form" action="createapp">
+        <div class="form-group">
+            <label for="appname">Application Name:</label>
+            <input type="text" class="form-control" id="appname" name="appname"/>
+        </div>
+        <div class="form-group">
+            <label for="redirecturi">Redirect API:</label>
+            <input type="text" class="form-control" id="redirecturi" name="redirecturi"/>
+        </div>
+        <div class="form-group">
+            <label for="loginprovider">Login Provider:</label>
+            <input type="text" class="form-control" id="loginprovider" name="loginprovider"/>
+        </div>
+
+
+        <button type="submit"  class="btn btn-default" name="signup" value="signup">Create App</button>
+    </form>
+</div>
+</body>
+</html>

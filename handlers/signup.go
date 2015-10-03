@@ -6,7 +6,8 @@ import (
 	"net/http"
 )
 
-var templates = template.Must(template.ParseFiles("../html/signup.html", "../html/thanks.html"))
+var templates = template.Must(template.ParseFiles("../html/signup.html", "../html/thanks.html", "../html/createapp.html",
+	"../html/appdetails.html"))
 
 func handleSignupGet(w http.ResponseWriter, r *http.Request) {
 	if err := templates.ExecuteTemplate(w, "signup.html", nil); err != nil {

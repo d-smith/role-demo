@@ -27,5 +27,6 @@ func Handler() http.Handler {
 	mux := http.NewServeMux()
 
 	mux.Handle("/signup", handleSignup())
+	mux.Handle("/createapp", handleCreateApp())
 	return mux
 }
