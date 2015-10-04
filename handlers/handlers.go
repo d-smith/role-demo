@@ -3,6 +3,7 @@ package handlers
 import (
 	"encoding/json"
 	"net/http"
+	"io/ioutil"
 )
 
 type ErrorResponse struct {
@@ -29,4 +30,15 @@ func Handler() http.Handler {
 	mux.Handle("/signup", handleSignup())
 	mux.Handle("/createapp", handleCreateApp())
 	return mux
+}
+
+
+func responseAsString(r *http.Response) string {
+	defer r.Body.Close()
+	body, err := ioutil.ReadAll(r.Body)
+	if err != nil {
+		return "error reading body"
+	}
+
+	return string(body)
 }
