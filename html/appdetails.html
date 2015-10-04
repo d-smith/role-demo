@@ -39,6 +39,23 @@
         </tr>
         </tbody>
     </table>
+    <h3>OAuth Endpoints</h3>
+    <table class="table table-condensed">
+        <tbody>
+        <tr>
+            <td>Authorization Code Flow</td>
+            <td><a href="http://localhost:3000/oauth2/authorize?client_id={{.ClientID}}&response_type=code&redirect_uri={{.RedirectURI}}" target="_blank">http://localhost:3000/oauth2/authorize?client_id={{.ClientID}}&response_type=code&redirect_uri={{.RedirectURI}}</a></td>
+        </tr>
+        <tr>
+            <td>Implicit Grant</td>
+            <td><a href="http://localhost:3000/oauth2/authorize?client_id={{.ClientID}}&response_type=token&redirect_uri={{.RedirectURI}}" target="_blank">http://localhost:3000/oauth2/authorize?client_id={{.ClientID}}&response_type=code&redirect_uri={{.RedirectURI}}</a></td>
+        </tr>
+        <tr>
+            <td>Username Password Grant, JWT Flow</td>
+            <td>http://localhost:3000/oauth2/token  </td>
+        </tr>
+        </tbody>
+    </table>
 </div>
 
 </body>
