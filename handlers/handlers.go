@@ -2,8 +2,8 @@ package handlers
 
 import (
 	"encoding/json"
-	"net/http"
 	"io/ioutil"
+	"net/http"
 )
 
 type ErrorResponse struct {
@@ -31,7 +31,6 @@ func Handler() http.Handler {
 	mux.Handle("/createapp", handleCreateApp())
 	return mux
 }
-
 
 func responseAsString(r *http.Response) string {
 	defer r.Body.Close()

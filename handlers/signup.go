@@ -7,17 +7,15 @@ import (
 	"fmt"
 	"github.com/xtraclabs/roll/roll"
 	"html/template"
+	"log"
 	"net/http"
 	"os"
-	"log"
 )
 
 var rollEndpoint = os.Getenv("ROLL_ENDPOINT")
 
 var templates = template.Must(template.ParseFiles("../html/signup.html", "../html/thanks.html", "../html/createapp.html",
 	"../html/appdetails.html", "../html/error.html"))
-
-
 
 func handleSignupGet(w http.ResponseWriter, r *http.Request) {
 	if err := templates.ExecuteTemplate(w, "signup.html", nil); err != nil {
@@ -61,14 +59,14 @@ func handleSignupPost(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-
 	if resp.StatusCode != http.StatusNoContent {
 		renderErrorPage(w, resp.StatusCode, responseAsString(resp))
 		return
 	}
 
 	log.Println("store of developer info ok")
-	if err := templates.ExecuteTemplate(w, "thanks.html", nil); err != nil {
+	ctx := devContext{Email: dev.Email}
+	if err := templates.ExecuteTemplate(w, "thanks.html", ctx); err != nil {
 		respondError(w, http.StatusInternalServerError, err)
 	}
 }

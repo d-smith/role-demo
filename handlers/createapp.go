@@ -14,13 +14,20 @@ type appDetails struct {
 	JWTFlowPublicKey string
 }
 
+type devContext struct {
+	Email string
+}
+
 func handleCreateGet(w http.ResponseWriter, r *http.Request) {
-	if err := templates.ExecuteTemplate(w, "createapp.html", nil); err != nil {
+	email := r.FormValue("email")
+	ctx := devContext{Email: email}
+	if err := templates.ExecuteTemplate(w, "createapp.html", ctx); err != nil {
 		respondError(w, http.StatusInternalServerError, err)
 	}
 }
 
 func handleCreatePost(w http.ResponseWriter, r *http.Request) {
+
 	details := appDetails{
 		ApplicationName: "foo app",
 		ClientID:        "id",
