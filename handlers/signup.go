@@ -6,6 +6,7 @@ import (
 	"errors"
 	"fmt"
 	"github.com/xtraclabs/roll/roll"
+	"github.com/xtraclabs/signup/auth"
 	"html/template"
 	"log"
 	"net/http"
@@ -50,6 +51,8 @@ func handleSignupPost(w http.ResponseWriter, r *http.Request) {
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
+
+	req.Header.Add("Authorization", "Bearer "+auth.AccessToken)
 
 	log.Println("submit put request")
 	client := http.Client{}
