@@ -19,24 +19,30 @@ type accessTokenResponse struct {
 }
 
 func validateEnvironment() {
+	var errOut = false
 	if os.Getenv("ROLL_ENDPOINT") == "" {
+		errOut = true
 		log.Println("ROLL_ENDPOINT environment variable not set.")
+	}
+
+	if os.Getenv("ROLL_CLIENTID") == "" {
+		errOut = true
+		log.Println("ROLL_CLIENTID environment variable not set.")
+	}
+
+	if os.Getenv("ROLL_SECRET") == "" {
+		errOut = true
+		log.Println("ROLL_SECRET environment variable not set.")
+	}
+
+	if errOut == true {
 		os.Exit(1)
 	}
 }
 
 func loginAsRollApp() {
 	var rollClientId = os.Getenv("ROLL_CLIENTID")
-	if rollClientId == "" {
-		log.Println("ROLL_CLIENTID environment variable not set.")
-		os.Exit(1)
-	}
-
 	var rollClientSecret = os.Getenv("ROLL_SECRET")
-	if rollClientSecret == "" {
-		log.Println("ROLL_SECRET environment variable not set.")
-		os.Exit(1)
-	}
 
 	resp, err := http.PostForm(os.Getenv("ROLL_ENDPOINT")+"/oauth2/token",
 		url.Values{"grant_type": {"password"},
